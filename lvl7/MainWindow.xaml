@@ -1,0 +1,73 @@
+﻿<Window x:Class="lvl7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lvl7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Icon="{StaticResource icon}">
+
+    <Grid>
+        <!-- Делим грид на 3 части по горизонтали -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="20,0" HorizontalAlignment="Left" Name="AddButton" Width="120" Height="40" Click="AddButton_Click">Добавить</Button>
+                <Button Margin="20,0" HorizontalAlignment="Left" Name="EditButton" Width="120" Height="40" Click="EditButton_Click" >Редактировать</Button>
+            </StackPanel>
+        </Grid>
+        
+        <!-- Создаем поля для поиска(SearchTextBox), сортировки(cbSort) и фильтрации(cbFiltr) -->
+        <Grid Grid.Row="0">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBox Margin="20,0,0,0" HorizontalAlignment="Left" Style="{StaticResource tbSeatchStyle}" Name="SearchTextBox" TextChanged="SearchTextBox_TextChanged" ></TextBox>
+                <ComboBox Margin="20,0,0,0" Style="{StaticResource ComboBoxStyle}" Name="cbSort" SelectionChanged="cbSort_SelectionChanged"></ComboBox>
+                <ComboBox SelectedItem="{Binding TypeProductNavigation}" DisplayMemberPath="TypeName" Margin="20,0,0,0" Style="{StaticResource ComboBoxStyle}" Name="cbFiltr" SelectionChanged="cbFiltr_SelectionChanged"></ComboBox>
+            </StackPanel>
+
+        </Grid>
+        
+        
+        <!-- Создаем ListView для отображения каждого продукта и задаем элементам стили в соответствии с заданием -->
+        <ListView ItemContainerStyle="{StaticResource MouseOverListViewElement2}" Name="MainListView" Grid.Row="1" SelectionChanged="ListView1_SelectionChanged">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <Grid Style="{StaticResource MouseOverListViewElement}">
+                        
+                        <!-- Делим каждый элемент списка на 3 части по вертикали для удобного отображения всех частей интерфейса -->
+                        <!-- Задаем каждой части ширину-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"/>
+                            <ColumnDefinition Width="450"/>
+                            <ColumnDefinition Width="180"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Создаем элементы для показа информации о каждом продукте 
+                        и присваиваем им значения для взаимодействия с моделью БД
+                        -->
+                        <Image Grid.Column="0" Width="110" Height="80" Source="{Binding Photo}"></Image>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{Binding Title}" FontSize="18"></TextBlock>
+                            <TextBlock Text="{Binding ArticleTitle}" FontSize="16"></TextBlock>
+                            <TextBlock Text="{Binding MaterialList}" FontSize="16"></TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock FontSize="16">Стоимость</TextBlock>
+                            <TextBlock Name="tbPrice" Text="{Binding Price}" FontSize="14"></TextBlock>
+                        </StackPanel>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

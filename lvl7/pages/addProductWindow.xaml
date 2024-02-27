@@ -1,0 +1,33 @@
+﻿<Window Closing="Window_Closing" x:Class="lvl7.pages.addProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lvl7.pages"
+        mc:Ignorable="d"
+        Title="Window1" Height="388" Width="303"
+        Icon="{StaticResource icon}">
+
+
+    <Grid Margin="0,0,28,20">
+        <!-- Создаем StackPanel для вертикального отображения всех -->
+        <StackPanel Margin="20,10,0,9">
+            <!-- Создаем элементы для отображения информации о продукте и подсказки для пользователей 
+            Так же прописываем значения элементов для взаимодействия с моделью БД
+            -->
+            <Grid Width="120" Height="120" MouseDown="ProductPhoto_MouseDown" Background="White">
+                <Image Name="ProductPhoto" Source="{Binding Photo}" Width="130" Height="130"></Image>
+            </Grid>
+            <TextBlock>Название</TextBlock>
+            <TextBox Text="{Binding NameProduct}"></TextBox>
+            <TextBlock >Тип продукта</TextBlock>
+            <ComboBox SelectedValue="{Binding TypeProductNavigation}" DisplayMemberPath="TypeName" Name="AddProductProductTypes"></ComboBox>
+            <TextBlock>Цена</TextBlock>
+            <TextBox Text="{Binding Price}"></TextBox>
+            <TextBlock>Артикль</TextBlock>
+            <TextBox Text="{Binding Article}"></TextBox>
+            <Button Name="ProductSaveButton" Click="ProductSaveButton_Click">Сохранить</Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
