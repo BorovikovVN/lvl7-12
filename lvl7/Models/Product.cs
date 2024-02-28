@@ -19,7 +19,7 @@ namespace lvl7.Models
 
         public string Title => TypeProductNavigation.TypeName + " | " + NameProduct;
 
-        public String ArticleTitle => "Артикль: " + Article;
+        public String ArticleTitle => "Артикул: " + Article;
 
         public String MaterialList => "Материалы: " + String.Join(", ", MaterialHasProducts.Select(pm => pm.MaterialIdMaterialNavigation.MaterialName));
 

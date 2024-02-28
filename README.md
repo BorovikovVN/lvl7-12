@@ -31,6 +31,5 @@
 
 ## Авторы
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Боровиков В.Н.** 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.

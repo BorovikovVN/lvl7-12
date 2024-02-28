@@ -24,7 +24,7 @@
             <ComboBox SelectedValue="{Binding TypeProductNavigation}" DisplayMemberPath="TypeName" Name="AddProductProductTypes"></ComboBox>
             <TextBlock>Цена</TextBlock>
             <TextBox Text="{Binding Price}"></TextBox>
-            <TextBlock>Артикль</TextBlock>
+            <TextBlock>Артикул</TextBlock>
             <TextBox Text="{Binding Article}"></TextBox>
             <Button Name="ProductSaveButton" Click="ProductSaveButton_Click">Сохранить</Button>
         </StackPanel>
